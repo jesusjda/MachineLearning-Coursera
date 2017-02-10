@@ -40,7 +40,7 @@ h = sigmoid( X * theta );
 
 l1 = log(h);
 l2 = log(1-h);
-size(l1)
+
 J = sum((- y .* l1 - (1-y).*l2));
 J = J / m;
 
