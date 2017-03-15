@@ -23,7 +23,19 @@ idx = zeros(size(X,1), 1);
 
 
 
-
+for i = 1 : size(idx)
+  id = 0;
+  mindis = inf;
+  for j = 1 : K
+    dis = norm(X(i,:) - centroids(j,:),2);
+    if dis < mindis
+      id = j;
+      mindis = dis;
+    end
+      
+  end
+  idx(i) = id;
+end
 
 
 
