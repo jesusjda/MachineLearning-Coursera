@@ -43,7 +43,22 @@ Theta_grad = zeros(size(Theta));
 
 
 
+predictions = X * Theta';
+errors = (predictions - Y) .* R;
+J = (1 / 2) * sum(sum(errors .^ 2));
 
+X_grad = errors * Theta;
+Theta_grad = errors' * X;
+
+reg_Theta = (lambda / 2) * sum(sum(Theta .^ 2));
+reg_X = (lambda / 2) * sum(sum(X .^ 2));
+J = J + reg_Theta + reg_X;
+
+
+X_grad = X_grad + lambda * X;
+Theta_grad = Theta_grad + lambda * Theta;
+
+grad = [X_grad(:); Theta_grad(:)];
 
 
 
